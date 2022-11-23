@@ -8,11 +8,16 @@ window.onload = function() {
 }
 
 function setGame() {
+    // board = [
+    //     [0,0,0,0],
+    //     [0,0,0,0],
+    //     [0,0,0,0],
+    //     [0,0,0,0]
     board = [
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0]
+        [2,2,2,2],
+        [2,2,2,2],
+        [4,4,8,8],
+        [4,4,8,8]
     ]
 
     for (let r = 0; r < rows; r++) {
@@ -22,6 +27,7 @@ function setGame() {
             tile.id = r.toString() + "-" + c.toString();
             let num = board[r][c];
             updateTile(tile, num);
+            document.getElementById("board").append(tile);
         }
     }
 }
@@ -39,4 +45,18 @@ function updateTile(tile, num) {
         }
     }
 
+}
+
+document.addEventListener("keyup", (e) => {
+    if (e.code == "ArrowLeft") {
+        slideLeft():
+    }
+})
+
+function slideLeft() {
+    for (let r = 0; r < rows; r++) {
+        let row = board[r];
+        row = slide(row);
+        board[r] = row;
+    }
 }
