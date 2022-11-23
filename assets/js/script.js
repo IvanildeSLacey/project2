@@ -20,6 +20,23 @@ function setGame() {
             //Creates div for inner tiles
             let tile = document.createElement("div");
             tile.id = r.toString() + "-" + c.toString();
+            let num = board[r][c];
+            updateTile(tile, num);
         }
     }
+}
+
+function updateTile(tile, num) {
+    tile.innerText = "";
+    tile.classList.value = ""; //clear the classlist so tiles dont have multiple classes
+    tile.classList.add("tile");
+    if (num > 0) {
+        tile.innerText = num;
+        if (num <= 4096)  {
+            tile.classList.add("x"+num.toString());
+        } else {
+            tile.classList.add("x8192");
+        }
+    }
+
 }
