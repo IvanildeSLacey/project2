@@ -53,6 +53,34 @@ document.addEventListener("keyup", (e) => {
     }
 })
 
+function filterZero(row) {
+    return row.filter(num => num != 0); //create new arraw without zero
+
+}
+
+function slide() {
+    // [0,2,2,2]
+    row = filterZero(row); //get rid of zero >> [2,2,2]
+
+    //slide
+    for (let i = 0; i < row.length-1; i++) {
+        //check every 2
+        if (row[i] == row[i+1]) {
+            row[i] *=2;
+            row[i+1] = 0;
+            score += row[i];
+        } //>> [2,2,2] is going to be [4,0,2]
+    }
+
+    row = filterZero(row); //[4,2]
+    //add zero
+    while (row.length < column) {
+        row.push(0);
+    } //[4,2,0,0]
+
+    return row;
+}
+
 function slideLeft() {
     for (let r = 0; r < rows; r++) {
         let row = board[r];
